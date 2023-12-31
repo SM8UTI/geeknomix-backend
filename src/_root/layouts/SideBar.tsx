@@ -2,25 +2,31 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftFromLine, ArrowRightFromLine, LogOut } from "lucide-react";
 import SideBarMenu from "../components/SideBarMenu";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSideBar } from "@/store/slices/MainSlice";
 
 const SideBar = () => {
-  const [sideBar, setSideBar] = useState(true);
+  const dispatch = useDispatch();
+
+  const sideBar = useSelector((state: any) => state.main.sideBar);
+
   const data = {
     name: "Smruti Ranjan Nayak",
     email: "smruti@admin.com",
   };
 
+  console.log(sideBar);
+
   return (
     <div
-      className={` bg-black h-full text-white relative transition-all ease-in-out duration-200  ${
-        sideBar ? "p-2 w-[260px]" : "w-0 p-0"
+      className={` bg-black h-full text-white absolute sm:relative top-0 left-0 z-[9999]  transition-all ease-in-out duration-200  ${
+        sideBar ? "p-2 w-[260px] " : "w-0 p-0"
       }`}
     >
       <Button
         className="absolute top-2 -right-[2.2rem] rounded-none rounded-tr-sm rounded-br-sm p-2 transition-all ease-in-out duration-300"
         onClick={() => {
-          setSideBar(!sideBar);
+          dispatch(setSideBar(!sideBar));
         }}
       >
         {sideBar ? (
