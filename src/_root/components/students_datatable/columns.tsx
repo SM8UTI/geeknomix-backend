@@ -1,7 +1,4 @@
 import { ColumnDef } from "@tanstack/react-table";
-import ReactCountryFlag from "react-country-flag";
-import { Badge } from "@/components/ui/badge";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,38 +8,19 @@ import {
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export type CoursePayment = {
-  country_code: string;
+export type Student = {
+  id: number;
   name: string;
   email: string;
-  phone: string;
-  course_name: string;
-  course_price: string;
-  payment_id: number;
-  date: string;
-  success: boolean;
+  gender: string;
+  phone_number: string;
+  city: string;
+  country: string;
+  id_card: string;
+  created: string;
 };
 
-export const columns: ColumnDef<CoursePayment>[] = [
-  {
-    accessorKey: "country_code",
-    header: "Country",
-    cell: ({ row }) => {
-      return (
-        <div>
-          <ReactCountryFlag
-            countryCode={row.original.country_code}
-            svg
-            style={{
-              width: "3em",
-              height: "3em",
-            }}
-            title={row.original.country_code}
-          />
-        </div>
-      );
-    },
-  },
+export const columns: ColumnDef<Student>[] = [
   {
     accessorKey: "name",
     header: "Full Name",
@@ -60,53 +38,50 @@ export const columns: ColumnDef<CoursePayment>[] = [
     },
   },
   {
-    accessorKey: "phone",
+    accessorKey: "phone_number",
     header: "Phone Number",
     cell: ({ row }) => {
       return (
         <div>
           <span className="text-sm font-normal text-MainGrey-300 whitespace-nowrap">
-            {row.original.phone}
+            {row.original.phone_number}
           </span>
         </div>
       );
     },
   },
   {
-    accessorKey: "course_name",
-    header: "Course Name",
+    accessorKey: "id_card",
+    header: "ID Card",
     cell: ({ row }) => {
       return (
-        <div className="w-[300px]">
-          <span className="text-sm font-normal text-MainGrey-300 w-full leading-6">
-            {row.original.course_name}
+        <div>
+          <span className="text-sm font-normal text-MainGrey-300 whitespace-nowrap">
+            {row.original.id_card}
           </span>
         </div>
       );
     },
   },
   {
-    accessorKey: "course_price",
-    header: "Course Price",
-  },
-  {
-    accessorKey: "payment_id",
-    header: "Payment ID",
-  },
-  {
-    accessorKey: "date",
-    header: "Date",
-  },
-  {
-    accessorKey: "success",
-    header: "Success",
+    accessorKey: "city",
+    header: "Location",
     cell: ({ row }) => {
-      return row.original.success ? (
-        <Badge variant="success">Success</Badge>
-      ) : (
-        <Badge variant="destructive">Failed</Badge>
+      return (
+        <div>
+          <h3 className="text-sm font-semibold text-MainGrey-500 whitespace-nowrap">
+            {row.original.city}
+          </h3>
+          <span className="text-xs font-normal text-MainGrey-300 whitespace-nowrap">
+            {row.original.country}
+          </span>
+        </div>
       );
     },
+  },
+  {
+    accessorKey: "created",
+    header: "Date",
   },
   {
     id: "actions",

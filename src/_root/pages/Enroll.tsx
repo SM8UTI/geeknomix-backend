@@ -8,7 +8,7 @@ const Enroll = () => {
 
   return (
     <div className="w-full">
-      <div className="mb-6  text-2xl font-bold text-MainGrey-500 font-primary">
+      <div className="mb-6  text-2xl font-bold text-MainGrey-400 font-primary">
         <h1 className={`${sideBar ? "ml-4 mt-3" : "mt-6"}`}>Enrolled lists</h1>
       </div>
       <div className="w-full">
