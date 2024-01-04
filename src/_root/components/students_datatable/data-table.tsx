@@ -77,6 +77,7 @@ export function DataTable<TData, TValue>({
           />
         </div>
         <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          {/* todo : update the list data = {courseList}  */}
           <SelectItems data={courseList} name="course" />
           <SelectItems data={courseList} name="branch" />
           <SelectItems data={courseList} name="tag" />

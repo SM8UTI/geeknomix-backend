@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { DataTable } from "../components/students_datatable/data-table";
 import { columns } from "../components/students_datatable/columns";
 import data from "../../data/students.json";
+import ManageStudentProfile from "../components/ManageStudentProfile";
 
 const ManageStudents = () => {
   const sideBar = useSelector((state: any) => state.main.sideBar);
@@ -29,8 +30,8 @@ const ManageStudents = () => {
         <div className="w-full md:w-[calc(100%_-_300px)]">
           <DataTable columns={columns} data={data} />
         </div>
-        <div className=" w-[300px] border-2 border-red-600 h-[100dvh] hidden md:flex">
-          profile
+        <div className=" w-[300px]  h-[120dvh] hidden md:flex mb-8">
+          <ManageStudentProfile />
         </div>
       </div>
     </div>
